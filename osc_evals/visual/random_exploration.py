@@ -5,7 +5,7 @@ Random exploration demo implementation
 import numpy as np
 import time
 
-from ...base import OSCDemoBase
+from ..base import OSCDemoBase
 
 
 class RandomExplorationDemo(OSCDemoBase):

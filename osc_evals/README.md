@@ -19,14 +19,12 @@ osc_evals/
 ├── registry.py                  # Demo registration system
 ├── cli.py                       # CLI interface
 ├── visual/                      # Visual demonstrations
-│   ├── __init__.py
-│   └── implementations/         # All visual demo implementations
-│       ├── __init__.py          # Auto-registers visual demos
-│       ├── square_pattern.py
-│       ├── pose_control.py
-│       ├── circle_pattern.py
-│       ├── variable_impedance.py
-│       └── random_exploration.py
+│   ├── __init__.py              # Auto-registers visual demos
+│   ├── square_pattern.py
+│   ├── pose_control.py
+│   ├── circle_pattern.py
+│   ├── variable_impedance.py
+│   └── random_exploration.py
 ├── empirical/                   # Empirical evaluations
 │   └── __init__.py              # Future: quantitative evals with wandb logging
 └── demo_osc_controller.py       # Entry point
@@ -52,7 +50,7 @@ python osc_evals/demo_osc_controller.py --help
 
 ### Step 1: Create Your Demo File
 
-Create a new file in `osc_evals/visual/implementations/`, for example `my_demo.py`:
+Create a new file in `osc_evals/visual/`, for example `my_demo.py`:
 
 ```python
 """
@@ -105,7 +103,7 @@ class MyCustomDemo(OSCDemoBase):
 
 ### Step 2: Register Your Demo
 
-Add it to `osc_evals/visual/implementations/__init__.py`:
+Add it to `osc_evals/visual/__init__.py`:
 
 ```python
 from .my_demo import MyCustomDemo

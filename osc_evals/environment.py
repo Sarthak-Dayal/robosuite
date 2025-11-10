@@ -3,8 +3,26 @@ Environment management for OSC demos
 """
 
 from typing import Dict, Any
+import os
+import sys
+import threading
 import robosuite as suite
 from robosuite.controllers.composite.composite_controller_factory import refactor_composite_controller_config
+
+# Set MUJOCO_GL early for macOS headless rendering if needed
+if sys.platform == "darwin":
+    # Check if we're on the main thread - if not, force offscreen rendering
+    try:
+        is_main_thread = threading.current_thread() is threading.main_thread()
+    except AttributeError:
+        # Fallback for older Python versions
+        is_main_thread = threading.current_thread().name == "MainThread"
+    
+    if not is_main_thread:
+        # Force osmesa backend to avoid GLFW window creation on non-main thread
+        if os.environ.get("MUJOCO_GL") is None:
+            os.environ["MUJOCO_GL"] = "osmesa"
+            print("[Environment] Running on non-main thread on macOS; set MUJOCO_GL=osmesa for headless rendering.")
 
 
 class OSCEnvironmentManager:
@@ -19,7 +37,9 @@ class OSCEnvironmentManager:
         self._env = None
     
     def create_environment(self, controller_type: str = "OSC_POSE",
-                          impedance_mode: str = "fixed") -> Any:
+                          impedance_mode: str = "fixed",
+                          use_offscreen: bool = False,
+                          use_camera_obs: bool = False) -> Any:
         """Create and return a configured environment"""
         # Load the part controller config
         arm_controller_config = suite.load_part_controller_config(
@@ -38,15 +58,43 @@ class OSCEnvironmentManager:
         )
         
         # Create environment
+        # Use "mujoco" renderer for headless/offscreen; "mjviewer" for on-screen
+        # On macOS, GLFW windows must be created on the main thread. If not, force offscreen.
+        if sys.platform == "darwin":
+            try:
+                is_main_thread = threading.current_thread() is threading.main_thread()
+            except AttributeError:
+                # Fallback for older Python versions
+                is_main_thread = threading.current_thread().name == "MainThread"
+            
+            if not is_main_thread:
+                if not use_offscreen:
+                    print("[Environment] Not on main thread on macOS; forcing offscreen rendering to avoid NSWindow crash.")
+                    use_offscreen = True
+                # Ensure MUJOCO_GL is set (should already be set at module level, but double-check)
+                if os.environ.get("MUJOCO_GL") is None:
+                    os.environ["MUJOCO_GL"] = "osmesa"
+                    print("[Environment] Set MUJOCO_GL=osmesa for headless rendering on macOS.")
+        
+        # Always use "mujoco" renderer when offscreen to avoid any window creation
+        renderer_backend = "mujoco" if use_offscreen else "mjviewer"
+        # Ensure has_renderer is False when offscreen to prevent any window creation
+        has_renderer = False if use_offscreen else True
+        
         self._env = suite.make(
             self.environment,
             robots=self.robot,
             controller_configs=controller_config,
-            has_renderer=True,
-            has_offscreen_renderer=False,
-            use_camera_obs=False,
+            has_renderer=has_renderer,
+            has_offscreen_renderer=use_offscreen,
+            use_camera_obs=use_camera_obs,
+            camera_names="frontview" if use_camera_obs else None,
+            camera_heights=512 if use_camera_obs else 256,
+            camera_widths=512 if use_camera_obs else 256,
             control_freq=self.control_freq,
             horizon=self.horizon,
+            ignore_done=True,  # Prevent episodes from terminating early
+            renderer=renderer_backend,
         )
         
         return self._env

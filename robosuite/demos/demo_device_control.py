@@ -8,6 +8,29 @@ Keyboard:
     The commands are mapped to joint velocities through an inverse kinematics
     solver from Bullet physics.
 
+    IMPORTANT: Click the rendering window first to activate keyboard controls!
+
+    Keyboard Controls:
+        Position Controls:
+            Arrow Keys (Up/Down/Left/Right): Move horizontally in x-y plane
+            Period (.) : Move down (decrease z)
+            Semicolon (;): Move up (increase z)
+
+        Orientation Controls:
+            E: Rotate roll positive (x-axis rotation)
+            R: Rotate roll negative (x-axis rotation)
+            Y: Rotate pitch positive (y-axis rotation)
+            H: Rotate pitch negative (y-axis rotation)
+            O: Rotate yaw negative (z-axis rotation)
+            P: Rotate yaw positive (z-axis rotation)
+
+        Other Controls:
+            Spacebar: Toggle gripper (open/close)
+            Ctrl+Q: Reset simulation
+            B: Toggle arm/base mode (if applicable, e.g., mobile robots)
+            S: Switch active arm (if multi-armed robot)
+            =: Switch active robot (if multi-robot environment)
+
     Note:
         To run this script with macOS, you must run it with root access.
 
@@ -49,7 +72,8 @@ Main difference is that user inputs with ik's rotations are always taken relativ
     --environment: Task to perform, e.g.: "Lift", "TwoArmPegInHole", "NutAssembly", etc.
 
     --robots: Robot(s) with which to perform the task. Can be any in
-        {"Panda", "Sawyer", "IIWA", "Jaco", "Kinova3", "UR5e", "Baxter"}. Note that the environments include sanity
+        {"Panda", "Sawyer", "IIWA", "Jaco", "Kinova3", "UR5e", "Baxter", "GR1", "GR1FixedLowerBody", 
+        "GR1ArmsOnly", "GR1FloatingBody", "Tiago", "SpotWithArm", etc.}. Note that the environments include sanity
         checks, such that a "TwoArm..." environment will only accept either a 2-tuple of robot names or a single
         bimanual robot name, according to the specified configuration (see below), and all other environments will
         only accept a single single-armed robot name
@@ -85,11 +109,15 @@ Examples:
     For two-arm multi single-arm robot environment:
         $ python demo_device_control.py --environment TwoArmLift --robots Sawyer Sawyer --config parallel --controller osc
 
+    For GR1 humanoid robot (bimanual):
+        $ python demo_device_control.py --environment TwoArmLift --robots GR1FixedLowerBody --config bimanual --arm left --controller osc
+
 
 """
 
 import argparse
 import time
+from typing import Any
 
 import numpy as np
 
@@ -97,6 +125,7 @@ import robosuite as suite
 from robosuite import load_composite_controller_config
 from robosuite.controllers.composite.composite_controller import WholeBody
 from robosuite.wrappers import VisualizationWrapper
+from robosuite.utils import transform_utils as T
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -161,6 +190,23 @@ if __name__ == "__main__":
         default=False,
         help="(DualSense Only)Reverse the effect of the x and y axes of the joystick.It is used to handle the case that the left/right and front/back sides of the view are opposite to the LX and LY of the joystick(Push LX up but the robot move left in your view)",
     )
+    parser.add_argument(
+        "--print-joint-poses",
+        action="store_true",
+        help="Print joint positions after each step during teleoperation",
+    )
+    parser.add_argument(
+        "--print-frequency",
+        type=int,
+        default=1,
+        help="Print joint positions every N steps (only if --print-joint-poses is enabled)",
+    )
+    parser.add_argument(
+        "--render-camera",
+        type=str,
+        default="frontview",
+        help="Camera to use for rendering. Options: 'frontview', 'agentview', 'birdview', 'sideview', 'robotview', or 'None' (for free mouse control)",
+    )
     args = parser.parse_args()
 
     # Get controller config
@@ -183,11 +229,13 @@ if __name__ == "__main__":
         args.config = None
 
     # Create environment
+    # Convert string "None" to actual None for free camera control
+    render_camera = None if args.render_camera.lower() == "none" else args.render_camera
     env = suite.make(
         **config,
         has_renderer=True,
         has_offscreen_renderer=False,
-        render_camera="agentview",
+        render_camera=render_camera,  # Options: "frontview", "birdview", "sideview", "agentview", "robotview", or None (for mouse control)
         ignore_done=True,
         use_camera_obs=False,
         reward_shaping=True,
@@ -246,9 +294,25 @@ if __name__ == "__main__":
 
         # Initialize variables that should the maintained between resets
         last_grasp = 0
+        step_count = 0
 
         # Initialize device control
         device.start_control()
+        
+        # Print helpful instructions for keyboard control
+        if args.device == "keyboard":
+            print("\n" + "="*60)
+            print("KEYBOARD CONTROLS - Click the rendering window first!")
+            print("="*60)
+            print("Arrow Keys: Move robot horizontally (x-y plane)")
+            print("Period (.) / Semicolon (;): Move up/down (z-axis)")
+            print("E/R: Rotate roll (x-axis rotation)")
+            print("Y/H: Rotate pitch (y-axis rotation)")
+            print("O/P: Rotate yaw (z-axis rotation)")
+            print("Spacebar: Toggle gripper (open/close)")
+            print("Ctrl+Q: Reset simulation")
+            print("="*60 + "\n")
+        
         all_prev_gripper_actions = [
             {
                 f"{robot_arm}_gripper": np.repeat([0], robot.gripper[robot_arm].dof)
@@ -298,6 +362,21 @@ if __name__ == "__main__":
 
             env.step(env_action)
             env.render()
+
+            # Print end-effector poses if requested
+            if args.print_joint_poses and (step_count % args.print_frequency == 0):
+                for i, robot in enumerate(env.robots):
+                    for arm in robot.arms:
+                        # Get end-effector position (X, Y, Z)
+                        eef_pos = robot._hand_pos[arm]
+                        # Get end-effector orientation as rotation matrix
+                        eef_orn = robot._hand_orn[arm]
+                        # Convert rotation matrix to Euler angles (roll, pitch, yaw)
+                        euler_angles = T.mat2euler(eef_orn)
+                        print(f"Robot {i} {arm} arm pose - X: {eef_pos[0]:.3f}, Y: {eef_pos[1]:.3f}, Z: {eef_pos[2]:.3f}, "
+                              f"Roll: {euler_angles[0]:.3f}, Pitch: {euler_angles[1]:.3f}, Yaw: {euler_angles[2]:.3f}")
+            
+            step_count += 1
 
             # limit frame rate if necessary
             if args.max_fr is not None:

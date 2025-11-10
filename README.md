@@ -39,6 +39,35 @@ This framework was originally developed in late 2017 by researchers in [Stanford
 * **human demonstrations**: utilities for collecting human demonstrations, replaying demonstration datasets, and leveraging demonstration data for learning. Check out our sister project [robomimic](https://arise-initiative.github.io/robomimic-web/);
 * **photorealistic rendering**: integration with advanced graphics tools that provide real-time photorealistic renderings of simulated scenes, including support for NVIDIA Isaac Sim rendering.
 
+## Building Custom Robot Models
+
+Robosuite supports building custom robot models from URDF files. The `build_gr1t1.py` script demonstrates how to convert a URDF model to a MuJoCo XML format while preserving the structure and naming conventions of existing robot models.
+
+### GR1T1 Robot
+
+The GR1T1 robot is a variant of the GR1 robot that uses URDF-derived parameters (inertial properties, joint limits, actuator effort limits) while maintaining the mesh-based geometry and structure of the original GR1 model.
+
+**Building GR1T1.xml:**
+```bash
+python build_gr1t1.py [path_to_urdf]
+```
+
+The script:
+- Uses `robosuite/models/assets/robots/gr1/robot.xml` as a structural template
+- Extracts inertial properties, joint limits, and actuator effort limits from the URDF
+- Maps URDF link/joint names to MJCF body/joint names
+- Preserves mesh geometries from the template
+- Outputs to `robosuite/models/assets/robots/gr1/GR1T1.xml`
+
+**Validating the conversion:**
+```bash
+python validate_urdf_conversion.py --urdf GR1T1.urdf --mjcf robosuite/models/assets/robots/gr1/GR1T1.xml
+```
+
+**Available GR1T1 variants:**
+- `GR1T1`: Full bimanual robot with URDF parameters
+- `GR1T1RightArmOnly`: Right arm only variant for single-arm manipulation tasks
+
 ## Citation
 Please cite [**robosuite**](https://robosuite.ai) if you use this framework in your publications:
 ```bibtex

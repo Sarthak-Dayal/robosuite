@@ -6,7 +6,7 @@ from typing import Optional
 import numpy as np
 import time
 
-from ...base import OSCDemoBase
+from ..base import OSCDemoBase
 
 
 class VariableImpedanceDemo(OSCDemoBase):

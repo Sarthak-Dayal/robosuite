@@ -15,7 +15,7 @@ class DemoRunner:
     
     def run_demo(self, demo_class: type[OSCDemoBase], 
                  controller_type: str, impedance_mode: str,
-                 render: bool = True):
+                 render: bool = True, **kwargs):
         """Run a demo with appropriate environment configuration"""
         
         # Check if we need to override controller settings
@@ -38,13 +38,32 @@ class DemoRunner:
         if self.current_env is not None:
             self.env_manager.close()
         
+        # Determine offscreen rendering:
+        # - Force offscreen if window rendering is disabled (render == False)
+        # - Or if wandb logging is enabled (for video frames)
+        use_offscreen = (not render) or kwargs.get('use_wandb', False)
+        # Use camera obs only if offscreen rendering is enabled
+        use_camera_obs = use_offscreen
+        
+        # Increase horizon for empirical tests to avoid early termination
+        if use_offscreen:
+            # For empirical tests, we need longer horizons
+            # Each target: ~200 steps to reach + 125 steps to hold = 325 steps
+            # 10 targets = 3250 steps minimum
+            self.env_manager.horizon = 5000
+        
         self.current_env = self.env_manager.create_environment(
             controller_type=controller_type,
-            impedance_mode=impedance_mode
+            impedance_mode=impedance_mode,
+            use_offscreen=use_offscreen,
+            use_camera_obs=use_camera_obs
         )
         
-        # Create and run demo
-        demo = demo_class(self.current_env, render=render)
+        # Disable window rendering whenever offscreen is enabled
+        actual_render = render and not use_offscreen
+        
+        # Create and run demo, passing through kwargs for empirical test parameters
+        demo = demo_class(self.current_env, render=actual_render, **kwargs)
         demo.run()
     
     def cleanup(self):
