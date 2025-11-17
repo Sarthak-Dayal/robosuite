@@ -2,8 +2,8 @@ from collections.abc import Iterable
 
 import numpy as np
 
-from robosuite.models.objects import CompositeObject
-from robosuite.utils.mjcf_utils import BLUE, CYAN, GREEN, RED, CustomMaterial, add_to_dict
+from robosuite.robosuite.models.objects import CompositeObject
+from robosuite.robosuite.utils.mjcf_utils import BLUE, CYAN, GREEN, RED, CustomMaterial, add_to_dict
 
 
 class HammerObject(CompositeObject):

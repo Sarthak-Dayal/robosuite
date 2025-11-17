@@ -3,14 +3,14 @@ from collections import OrderedDict
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.environments.manipulation.manipulation_env import ManipulationEnv
-from robosuite.models.arenas import TableArena
-from robosuite.models.objects import HookFrame, RatchetingWrenchObject, StandWithMount
-from robosuite.models.tasks import ManipulationTask
-from robosuite.utils.mjcf_utils import CustomMaterial
-from robosuite.utils.observables import Observable, sensor
-from robosuite.utils.placement_samplers import SequentialCompositeSampler, UniformRandomSampler
-from robosuite.utils.sim_utils import check_contact
+from robosuite.robosuite.environments.manipulation.manipulation_env import ManipulationEnv
+from robosuite.robosuite.models.arenas import TableArena
+from robosuite.robosuite.models.objects import HookFrame, RatchetingWrenchObject, StandWithMount
+from robosuite.robosuite.models.tasks import ManipulationTask
+from robosuite.robosuite.utils.mjcf_utils import CustomMaterial
+from robosuite.robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.utils.placement_samplers import SequentialCompositeSampler, UniformRandomSampler
+from robosuite.robosuite.utils.sim_utils import check_contact
 
 
 class ToolHang(ManipulationEnv):

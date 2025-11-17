@@ -2,8 +2,8 @@
 
 import numpy as np
 
-from robosuite.controllers.parts.gripper.gripper_controller import GripperController
-from robosuite.utils.control_utils import *
+from robosuite.robosuite.controllers.parts.gripper.gripper_controller import GripperController
+from robosuite.robosuite.utils.control_utils import *
 
 # Supported impedance modes
 

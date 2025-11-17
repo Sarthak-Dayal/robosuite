@@ -12,7 +12,7 @@ from enum import IntFlag
 import numpy as np
 
 from robosuite import make
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 try:
     import hid
@@ -25,8 +25,8 @@ except ModuleNotFoundError as exc:
 
 
 import robosuite.macros as macros
-from robosuite.devices import Device
-from robosuite.utils.transform_utils import rotation_matrix
+from robosuite.robosuite.devices import Device
+from robosuite.robosuite.utils.transform_utils import rotation_matrix
 
 
 class ConnectionType(IntFlag):

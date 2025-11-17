@@ -5,9 +5,9 @@ robosuite environments.
 import mujoco
 import numpy as np
 
-from robosuite.utils.log_utils import rs_assert
-from robosuite.utils.mjmod import CameraModder, DynamicsModder, LightingModder, TextureModder
-from robosuite.wrappers import Wrapper
+from robosuite.robosuite.utils.log_utils import rs_assert
+from robosuite.robosuite.utils.mjmod import CameraModder, DynamicsModder, LightingModder, TextureModder
+from robosuite.robosuite.wrappers import Wrapper
 
 DEFAULT_COLOR_ARGS = {
     "geom_names": None,  # all geoms are randomized

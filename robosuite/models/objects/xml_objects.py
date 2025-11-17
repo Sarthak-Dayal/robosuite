@@ -1,7 +1,7 @@
 import numpy as np
 
-from robosuite.models.objects import MujocoXMLObject
-from robosuite.utils.mjcf_utils import array_to_string, find_elements, xml_path_completion
+from robosuite.robosuite.models.objects import MujocoXMLObject
+from robosuite.robosuite.utils.mjcf_utils import array_to_string, find_elements, xml_path_completion
 
 
 class BottleObject(MujocoXMLObject):

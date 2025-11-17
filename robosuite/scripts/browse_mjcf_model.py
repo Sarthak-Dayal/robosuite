@@ -14,7 +14,7 @@ from mujoco import viewer
 from pynput import keyboard
 
 import robosuite as suite
-from robosuite.utils.binding_utils import MjSim
+from robosuite.robosuite.utils.binding_utils import MjSim
 
 DEFAULT_FREE_CAM = {
     "lookat": [0, 0, 0.7],

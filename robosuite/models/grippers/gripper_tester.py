@@ -6,12 +6,12 @@ import xml.etree.ElementTree as ET
 import numpy as np
 
 import robosuite.macros as macros
-from robosuite.models.arenas.table_arena import TableArena
-from robosuite.models.objects import BoxObject
-from robosuite.models.world import MujocoWorldBase
-from robosuite.renderers.viewer import OpenCVViewer
-from robosuite.utils.binding_utils import MjRenderContextOffscreen, MjSim
-from robosuite.utils.mjcf_utils import array_to_string, new_actuator, new_joint
+from robosuite.robosuite.models.arenas.table_arena import TableArena
+from robosuite.robosuite.models.objects import BoxObject
+from robosuite.robosuite.models.world import MujocoWorldBase
+from robosuite.robosuite.renderers.viewer import OpenCVViewer
+from robosuite.robosuite.utils.binding_utils import MjRenderContextOffscreen, MjSim
+from robosuite.robosuite.utils.mjcf_utils import array_to_string, new_actuator, new_joint
 
 
 class GripperTester:

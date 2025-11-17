@@ -285,7 +285,7 @@ Examples:
         # Special handling for position_hold: explicit EE poses, positions, or convert from joint targets
         if args.demo == 'position_hold':
             import json, numpy as np, os
-            from robosuite.utils import transform_utils as T
+            from robosuite.robosuite.utils import transform_utils as T
             
             # Case 1: explicit EE poses (position + orientation) [x, y, z, roll, pitch, yaw]
             if args.pose_targets_json and os.path.exists(args.pose_targets_json):

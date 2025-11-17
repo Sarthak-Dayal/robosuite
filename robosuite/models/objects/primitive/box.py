@@ -1,7 +1,7 @@
 import numpy as np
 
-from robosuite.models.objects import PrimitiveObject
-from robosuite.utils.mjcf_utils import get_size
+from robosuite.robosuite.models.objects import PrimitiveObject
+from robosuite.robosuite.utils.mjcf_utils import get_size
 
 
 class BoxObject(PrimitiveObject):

@@ -4,10 +4,10 @@ from copy import deepcopy
 import numpy as np
 
 import robosuite.macros as macros
-from robosuite.environments.base import MujocoEnv
-from robosuite.robots import ROBOT_CLASS_MAPPING
-from robosuite.utils.mjcf_utils import IMAGE_CONVENTION_MAPPING
-from robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.environments.base import MujocoEnv
+from robosuite.robosuite.robots import ROBOT_CLASS_MAPPING
+from robosuite.robosuite.utils.mjcf_utils import IMAGE_CONVENTION_MAPPING
+from robosuite.robosuite.utils.observables import Observable, sensor
 
 
 class RobotEnv(MujocoEnv):

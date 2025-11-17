@@ -2,7 +2,7 @@
 Defines the null base model
 """
 
-from robosuite.models.bases.robot_base_model import RobotBaseModel
+from robosuite.robosuite.models.bases.robot_base_model import RobotBaseModel
 
 
 class NullBaseModel(RobotBaseModel):

@@ -18,9 +18,9 @@ import cv2
 import numpy as np
 
 import robosuite as suite
-from robosuite.controllers.composite.composite_controller import WholeBody
-from robosuite.utils.observables import Observable, create_gaussian_noise_corrupter, create_uniform_sampled_delayer
-from robosuite.wrappers import VisualizationWrapper
+from robosuite.robosuite.controllers.composite.composite_controller import WholeBody
+from robosuite.robosuite.utils.observables import Observable, create_gaussian_noise_corrupter, create_uniform_sampled_delayer
+from robosuite.robosuite.wrappers import VisualizationWrapper
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -204,7 +204,7 @@ if __name__ == "__main__":
 
     # initialize device
     if args.device == "keyboard":
-        from robosuite.devices import Keyboard
+        from robosuite.robosuite.devices import Keyboard
 
         device = Keyboard(
             env=env,
@@ -212,7 +212,7 @@ if __name__ == "__main__":
             rot_sensitivity=args.rot_sensitivity,
         )
     elif args.device == "spacemouse":
-        from robosuite.devices import SpaceMouse
+        from robosuite.robosuite.devices import SpaceMouse
 
         device = SpaceMouse(
             env=env,
@@ -220,7 +220,7 @@ if __name__ == "__main__":
             rot_sensitivity=args.rot_sensitivity,
         )
     elif args.device == "dualsense":
-        from robosuite.devices import DualSense
+        from robosuite.robosuite.devices import DualSense
 
         device = DualSense(
             env=env,

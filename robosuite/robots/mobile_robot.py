@@ -5,9 +5,9 @@ from collections import OrderedDict
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.controllers import load_part_controller_config
-from robosuite.robots.robot import Robot
-from robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.controllers import load_part_controller_config
+from robosuite.robosuite.robots.robot import Robot
+from robosuite.robosuite.utils.observables import Observable, sensor
 
 
 class MobileRobot(Robot):

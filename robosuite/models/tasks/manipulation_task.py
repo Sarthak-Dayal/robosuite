@@ -1,4 +1,4 @@
-from robosuite.models.tasks.task import Task
+from robosuite.robosuite.models.tasks.task import Task
 
 
 class ManipulationTask(Task):

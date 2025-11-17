@@ -5,9 +5,9 @@ from typing import Dict, List, Union
 import numpy as np
 
 import robosuite as suite
-from robosuite.controllers import load_composite_controller_config
-from robosuite.robots import ROBOT_CLASS_MAPPING
-from robosuite.utils.robot_composition_utils import create_composite_robot
+from robosuite.robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.robots import ROBOT_CLASS_MAPPING
+from robosuite.robosuite.utils.robot_composition_utils import create_composite_robot
 
 
 def create_and_test_env(

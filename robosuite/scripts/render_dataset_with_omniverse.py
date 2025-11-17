@@ -194,7 +194,7 @@ def reset_to(env, state):
         env.reset()
         robosuite_version_id = int(robosuite.__version__.split(".")[1])
         if robosuite_version_id <= 3:
-            from robosuite.utils.mjcf_utils import postprocess_model_xml
+            from robosuite.robosuite.utils.mjcf_utils import postprocess_model_xml
 
             xml = postprocess_model_xml(state["model"])
         else:
@@ -295,7 +295,7 @@ class RobosuiteEnvInterface:
         # temporary fix for backward compatibility here to load the correct config if version is less than v1.5.0
         # assume all version number is single digit
         if env_meta["env_version"] < "v1.5.0":
-            from robosuite.controllers import load_composite_controller_config
+            from robosuite.robosuite.controllers import load_composite_controller_config
 
             if "composite_controller_configs" in env_kwargs:
                 del env_kwargs["composite_controller_configs"]

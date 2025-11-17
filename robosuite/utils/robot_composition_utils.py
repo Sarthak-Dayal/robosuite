@@ -1,9 +1,9 @@
 from typing import List, Optional, Tuple, Union
 
-from robosuite.models.robots.robot_model import REGISTERED_ROBOTS, RobotModel
-from robosuite.robots import register_robot_class
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
-from robosuite.utils.robot_utils import check_bimanual
+from robosuite.robosuite.models.robots.robot_model import REGISTERED_ROBOTS, RobotModel
+from robosuite.robosuite.robots import register_robot_class
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.utils.robot_utils import check_bimanual
 
 BASE_TARGET_MAPPING = {
     "RethinkMount": "FixedBaseRobot",

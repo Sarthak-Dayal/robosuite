@@ -5,8 +5,8 @@ from copy import deepcopy
 import numpy as np
 
 import robosuite.macros as macros
-from robosuite.models.base import MujocoModel, MujocoXML
-from robosuite.utils.mjcf_utils import (
+from robosuite.robosuite.models.base import MujocoModel, MujocoXML
+from robosuite.robosuite.utils.mjcf_utils import (
     OBJECT_COLLISION_COLOR,
     CustomMaterial,
     add_material,

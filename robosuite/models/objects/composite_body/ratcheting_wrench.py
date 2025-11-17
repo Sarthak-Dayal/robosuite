@@ -1,7 +1,7 @@
 import numpy as np
 
-from robosuite.models.objects import BoxObject, CompositeBodyObject, CylinderObject, HollowCylinderObject
-from robosuite.utils.mjcf_utils import CustomMaterial
+from robosuite.robosuite.models.objects import BoxObject, CompositeBodyObject, CylinderObject, HollowCylinderObject
+from robosuite.robosuite.utils.mjcf_utils import CustomMaterial
 
 
 class RatchetingWrenchObject(CompositeBodyObject):

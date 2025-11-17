@@ -5,8 +5,8 @@ from xml.etree import ElementTree as ET
 
 import numpy as np
 
-from robosuite.models.bases.robot_base_model import RobotBaseModel
-from robosuite.utils.mjcf_utils import find_elements, find_parent
+from robosuite.robosuite.models.bases.robot_base_model import RobotBaseModel
+from robosuite.robosuite.utils.mjcf_utils import find_elements, find_parent
 
 
 class LegBaseModel(RobotBaseModel):

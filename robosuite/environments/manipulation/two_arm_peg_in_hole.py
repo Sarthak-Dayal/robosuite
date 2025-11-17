@@ -1,12 +1,12 @@
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.environments.manipulation.two_arm_env import TwoArmEnv
-from robosuite.models.arenas import EmptyArena
-from robosuite.models.objects import CylinderObject, PlateWithHoleObject
-from robosuite.models.tasks import ManipulationTask
-from robosuite.utils.mjcf_utils import CustomMaterial, array_to_string, find_elements
-from robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.environments.manipulation.two_arm_env import TwoArmEnv
+from robosuite.robosuite.models.arenas import EmptyArena
+from robosuite.robosuite.models.objects import CylinderObject, PlateWithHoleObject
+from robosuite.robosuite.models.tasks import ManipulationTask
+from robosuite.robosuite.utils.mjcf_utils import CustomMaterial, array_to_string, find_elements
+from robosuite.robosuite.utils.observables import Observable, sensor
 
 """
 Offset functions for peg and hole objects. These are needed because the peg and 

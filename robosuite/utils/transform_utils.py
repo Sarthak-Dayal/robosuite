@@ -8,7 +8,7 @@ import math
 
 import numpy as np
 
-from robosuite.utils.numba import jit_decorator
+from robosuite.robosuite.utils.numba import jit_decorator
 
 PI = np.pi
 EPS = np.finfo(float).eps * 4.0

@@ -123,9 +123,9 @@ import numpy as np
 
 import robosuite as suite
 from robosuite import load_composite_controller_config
-from robosuite.controllers.composite.composite_controller import WholeBody
-from robosuite.wrappers import VisualizationWrapper
-from robosuite.utils import transform_utils as T
+from robosuite.robosuite.controllers.composite.composite_controller import WholeBody
+from robosuite.robosuite.wrappers import VisualizationWrapper
+from robosuite.robosuite.utils import transform_utils as T
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -251,7 +251,7 @@ if __name__ == "__main__":
 
     # initialize device
     if args.device == "keyboard":
-        from robosuite.devices import Keyboard
+        from robosuite.robosuite.devices import Keyboard
 
         device = Keyboard(
             env=env,
@@ -260,7 +260,7 @@ if __name__ == "__main__":
         )
         env.viewer.add_keypress_callback(device.on_press)
     elif args.device == "spacemouse":
-        from robosuite.devices import SpaceMouse
+        from robosuite.robosuite.devices import SpaceMouse
 
         device = SpaceMouse(
             env=env,
@@ -268,7 +268,7 @@ if __name__ == "__main__":
             rot_sensitivity=args.rot_sensitivity,
         )
     elif args.device == "dualsense":
-        from robosuite.devices import DualSense
+        from robosuite.robosuite.devices import DualSense
 
         device = DualSense(
             env=env,
@@ -277,7 +277,7 @@ if __name__ == "__main__":
             reverse_xy=args.reverse_xy,
         )
     elif args.device == "mjgui":
-        from robosuite.devices.mjgui import MJGUI
+        from robosuite.robosuite.devices.mjgui import MJGUI
 
         device = MJGUI(env=env)
     else:

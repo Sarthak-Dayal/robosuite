@@ -5,7 +5,7 @@ import mujoco.viewer
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 
 def get_nullspace_gains(joint_names: List[str], weight_dict: Dict[str, float]) -> np.ndarray:

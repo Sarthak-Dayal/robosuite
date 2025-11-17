@@ -10,13 +10,13 @@ Example:
 
 import xml.etree.ElementTree as ET
 
-from robosuite.models import MujocoWorldBase
-from robosuite.models.arenas.table_arena import TableArena
-from robosuite.models.grippers import PandaGripper, RethinkGripper
-from robosuite.models.objects import BoxObject
-from robosuite.renderers.viewer import OpenCVViewer
-from robosuite.utils.binding_utils import MjRenderContextOffscreen, MjSim
-from robosuite.utils.mjcf_utils import new_actuator, new_joint
+from robosuite.robosuite.models import MujocoWorldBase
+from robosuite.robosuite.models.arenas.table_arena import TableArena
+from robosuite.robosuite.models.grippers import PandaGripper, RethinkGripper
+from robosuite.robosuite.models.objects import BoxObject
+from robosuite.robosuite.renderers.viewer import OpenCVViewer
+from robosuite.robosuite.utils.binding_utils import MjRenderContextOffscreen, MjSim
+from robosuite.robosuite.utils.mjcf_utils import new_actuator, new_joint
 
 if __name__ == "__main__":
 

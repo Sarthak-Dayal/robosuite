@@ -1,7 +1,7 @@
 import numpy as np
 
-from robosuite.models.objects import BoxObject, CompositeBodyObject, CylinderObject
-from robosuite.utils.mjcf_utils import BLUE, RED, CustomMaterial, array_to_string
+from robosuite.robosuite.models.objects import BoxObject, CompositeBodyObject, CylinderObject
+from robosuite.robosuite.utils.mjcf_utils import BLUE, RED, CustomMaterial, array_to_string
 
 
 class HingedBoxObject(CompositeBodyObject):

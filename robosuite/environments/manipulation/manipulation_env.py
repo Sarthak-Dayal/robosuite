@@ -1,12 +1,12 @@
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.environments.robot_env import RobotEnv
-from robosuite.models.base import MujocoModel
-from robosuite.models.grippers import GripperModel
-from robosuite.robots import ROBOT_CLASS_MAPPING, FixedBaseRobot, MobileRobot
-from robosuite.robots.legged_robot import LeggedRobot
-from robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.environments.robot_env import RobotEnv
+from robosuite.robosuite.models.base import MujocoModel
+from robosuite.robosuite.models.grippers import GripperModel
+from robosuite.robosuite.robots import ROBOT_CLASS_MAPPING, FixedBaseRobot, MobileRobot
+from robosuite.robosuite.robots.legged_robot import LeggedRobot
+from robosuite.robosuite.utils.observables import Observable, sensor
 
 
 class ManipulationEnv(RobotEnv):

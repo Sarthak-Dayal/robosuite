@@ -2,8 +2,8 @@ from collections import OrderedDict
 
 import numpy as np
 
-from robosuite.models.robots.manipulators.manipulator_model import ManipulatorModel
-from robosuite.utils.mjcf_utils import find_parent
+from robosuite.robosuite.models.robots.manipulators.manipulator_model import ManipulatorModel
+from robosuite.robosuite.utils.mjcf_utils import find_parent
 
 
 class LeggedManipulatorModel(ManipulatorModel):

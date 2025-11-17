@@ -5,8 +5,8 @@ Script to showcase domain randomization functionality.
 import time
 
 import robosuite.macros as macros
-from robosuite.utils.input_utils import *
-from robosuite.wrappers import DomainRandomizationWrapper
+from robosuite.robosuite.utils.input_utils import *
+from robosuite.robosuite.wrappers import DomainRandomizationWrapper
 
 # We'll use instance randomization so that entire geom groups are randomized together
 macros.USING_INSTANCE_RANDOMIZATION = True

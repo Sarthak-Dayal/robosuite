@@ -2,7 +2,7 @@ import numpy as np
 
 import robosuite.utils.sim_utils as SU
 import robosuite.utils.transform_utils as T
-from robosuite.models.objects import Bin, Lid, ObjectGroup
+from robosuite.robosuite.models.objects import Bin, Lid, ObjectGroup
 
 
 class TransportGroup(ObjectGroup):

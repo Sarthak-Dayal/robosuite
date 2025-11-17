@@ -7,7 +7,7 @@ import os
 import sys
 import threading
 import robosuite as suite
-from robosuite.controllers.composite.composite_controller_factory import refactor_composite_controller_config
+from robosuite.robosuite.controllers.composite.composite_controller_factory import refactor_composite_controller_config
 
 # Set MUJOCO_GL early for macOS headless rendering if needed
 if sys.platform == "darwin":

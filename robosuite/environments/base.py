@@ -8,10 +8,10 @@ import numpy as np
 import robosuite
 import robosuite.macros as macros
 import robosuite.utils.sim_utils as SU
-from robosuite.renderers.base import load_renderer_config
-from robosuite.renderers.viewer import OpenCVViewer
-from robosuite.utils import SimulationError, XMLError
-from robosuite.utils.binding_utils import MjRenderContextOffscreen, MjSim
+from robosuite.robosuite.renderers.base import load_renderer_config
+from robosuite.robosuite.renderers.viewer import OpenCVViewer
+from robosuite.robosuite.utils import SimulationError, XMLError
+from robosuite.robosuite.utils.binding_utils import MjRenderContextOffscreen, MjSim
 
 REGISTERED_ENVS = {}
 
@@ -178,7 +178,7 @@ class MujocoEnv(metaclass=EnvMeta):
         if self.renderer == "mujoco":
             pass
         elif self.renderer == "mjviewer":
-            from robosuite.renderers.viewer import MjviewerRenderer
+            from robosuite.robosuite.renderers.viewer import MjviewerRenderer
 
             if self.render_camera is not None:
                 assert len(self.render_camera) == 1, "Only one camera can be specified for mjviewer"

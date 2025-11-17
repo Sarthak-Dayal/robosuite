@@ -3,9 +3,9 @@ from copy import copy
 
 import numpy as np
 
-from robosuite.models.objects import MujocoObject
-from robosuite.utils import RandomizationError
-from robosuite.utils.transform_utils import quat_multiply
+from robosuite.robosuite.models.objects import MujocoObject
+from robosuite.robosuite.utils import RandomizationError
+from robosuite.robosuite.utils.transform_utils import quat_multiply
 
 
 class ObjectPositionSampler:

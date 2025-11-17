@@ -1,9 +1,9 @@
 import argparse
 from xml.etree import ElementTree as ET
 
-from robosuite.controllers.composite.composite_controller_factory import load_composite_controller_config
-from robosuite.robots.robot import Robot
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER as logger
+from robosuite.robosuite.controllers.composite.composite_controller_factory import load_composite_controller_config
+from robosuite.robosuite.robots.robot import Robot
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER as logger
 
 
 def check_xml_definition(root):

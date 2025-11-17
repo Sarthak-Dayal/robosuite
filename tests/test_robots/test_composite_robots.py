@@ -11,10 +11,10 @@ import pytest
 
 import robosuite as suite
 import robosuite.utils.robot_composition_utils as cu
-from robosuite.controllers import load_composite_controller_config
-from robosuite.models.grippers import GRIPPER_MAPPING
-from robosuite.models.robots import is_robosuite_robot
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.models.grippers import GRIPPER_MAPPING
+from robosuite.robosuite.models.robots import is_robosuite_robot
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 ROBOSUITE_DEFAULT_LOGGER.setLevel(logging.ERROR)
 

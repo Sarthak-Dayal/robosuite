@@ -10,7 +10,7 @@ import imageio
 import numpy as np
 
 import robosuite as suite
-from robosuite.utils.input_utils import *
+from robosuite.robosuite.utils.input_utils import *
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

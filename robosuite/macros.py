@@ -49,10 +49,10 @@ FILE_LOGGING_LEVEL = None
 
 # Override with macros from macros_private.py file, if it exists
 try:
-    from robosuite.macros_private import *
+    from robosuite.robosuite.macros_private import *
 except ImportError:
     import robosuite
-    from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+    from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
     ROBOSUITE_DEFAULT_LOGGER.warning("No private macro file found!")
     ROBOSUITE_DEFAULT_LOGGER.warning("It is recommended to use a private macro file")

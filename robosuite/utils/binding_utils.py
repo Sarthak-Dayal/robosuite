@@ -68,11 +68,11 @@ class MjRenderContext:
             if _MUJOCO_GL not in _VALID_MUJOCO_GL:
                 raise RuntimeError(f"invalid value for environment variable MUJOCO_GL: {_MUJOCO_GL}")
             if _SYSTEM == "Linux" and _MUJOCO_GL == "osmesa":
-                from robosuite.renderers.context.osmesa_context import OSMesaGLContext as GLContext
+                from robosuite.robosuite.renderers.context.osmesa_context import OSMesaGLContext as GLContext
             elif _SYSTEM == "Linux" and _MUJOCO_GL == "egl":
-                from robosuite.renderers.context.egl_context import EGLGLContext as GLContext
+                from robosuite.robosuite.renderers.context.egl_context import EGLGLContext as GLContext
             else:
-                from robosuite.renderers.context.glfw_context import GLFWGLContext as GLContext
+                from robosuite.robosuite.renderers.context.glfw_context import GLFWGLContext as GLContext
 
         assert offscreen, "only offscreen supported for now"
         self.sim = sim

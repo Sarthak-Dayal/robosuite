@@ -2,12 +2,12 @@ from collections import OrderedDict
 
 import numpy as np
 
-from robosuite.environments.manipulation.manipulation_env import ManipulationEnv
-from robosuite.models.arenas import TableArena
-from robosuite.models.objects import DoorObject
-from robosuite.models.tasks import ManipulationTask
-from robosuite.utils.observables import Observable, sensor
-from robosuite.utils.placement_samplers import UniformRandomSampler
+from robosuite.robosuite.environments.manipulation.manipulation_env import ManipulationEnv
+from robosuite.robosuite.models.arenas import TableArena
+from robosuite.robosuite.models.objects import DoorObject
+from robosuite.robosuite.models.tasks import ManipulationTask
+from robosuite.robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.utils.placement_samplers import UniformRandomSampler
 
 
 class Door(ManipulationEnv):

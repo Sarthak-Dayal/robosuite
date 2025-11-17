@@ -5,9 +5,9 @@ import pathlib
 from typing import Dict, Literal, Optional
 
 import robosuite
-from robosuite.controllers.composite.composite_controller import REGISTERED_COMPOSITE_CONTROLLERS_DICT
-from robosuite.controllers.parts.controller_factory import load_part_controller_config
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.controllers.composite.composite_controller import REGISTERED_COMPOSITE_CONTROLLERS_DICT
+from robosuite.robosuite.controllers.parts.controller_factory import load_part_controller_config
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 
 def validate_composite_controller_config(config: dict):

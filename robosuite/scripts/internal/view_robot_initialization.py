@@ -3,9 +3,9 @@ import argparse
 import numpy as np
 
 import robosuite as suite
-from robosuite.controllers import load_composite_controller_config
-from robosuite.robots import ROBOT_CLASS_MAPPING
-from robosuite.wrappers import VisualizationWrapper
+from robosuite.robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.robots import ROBOT_CLASS_MAPPING
+from robosuite.robosuite.wrappers import VisualizationWrapper
 
 
 def bimanual_check(robot):

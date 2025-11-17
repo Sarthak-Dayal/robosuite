@@ -1,8 +1,8 @@
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.models.objects import CompositeObject
-from robosuite.utils.mjcf_utils import BLUE, GREEN, RED, CustomMaterial, add_to_dict
+from robosuite.robosuite.models.objects import CompositeObject
+from robosuite.robosuite.utils.mjcf_utils import BLUE, GREEN, RED, CustomMaterial, add_to_dict
 
 
 class HookFrame(CompositeObject):
@@ -198,7 +198,7 @@ class HookFrame(CompositeObject):
 
         # optionally add cone tip
         if self.tip_size is not None:
-            from robosuite.models.objects import ConeObject
+            from robosuite.robosuite.models.objects import ConeObject
 
             cone = ConeObject(
                 name="cone",

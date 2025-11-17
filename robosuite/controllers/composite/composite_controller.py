@@ -5,12 +5,12 @@ from typing import Dict, Optional, Tuple
 
 import numpy as np
 
-from robosuite.controllers import controller_factory
-from robosuite.models.grippers.gripper_model import GripperModel
-from robosuite.models.robots.robot_model import RobotModel
-from robosuite.utils.binding_utils import MjSim
-from robosuite.utils.ik_utils import IKSolver, get_nullspace_gains
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.controllers import controller_factory
+from robosuite.robosuite.models.grippers.gripper_model import GripperModel
+from robosuite.robosuite.models.robots.robot_model import RobotModel
+from robosuite.robosuite.utils.binding_utils import MjSim
+from robosuite.robosuite.utils.ik_utils import IKSolver, get_nullspace_gains
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 REGISTERED_COMPOSITE_CONTROLLERS_DICT = {}
 

@@ -2,8 +2,8 @@ from collections import OrderedDict
 
 import numpy as np
 
-from robosuite.models.robots import RobotModel
-from robosuite.utils.mjcf_utils import find_elements, string_to_array
+from robosuite.robosuite.models.robots import RobotModel
+from robosuite.robosuite.utils.mjcf_utils import find_elements, string_to_array
 
 
 class HumanoidModel(RobotModel):

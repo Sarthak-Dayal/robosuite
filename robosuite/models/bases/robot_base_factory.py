@@ -4,7 +4,7 @@ Defines a string based method of initializing mounts
 
 from typing import Optional
 
-from robosuite.models.bases.robot_base_model import RobotBaseModel
+from robosuite.robosuite.models.bases.robot_base_model import RobotBaseModel
 
 
 def robot_base_factory(name: Optional[str], idn=0) -> RobotBaseModel:
@@ -24,6 +24,6 @@ def robot_base_factory(name: Optional[str], idn=0) -> RobotBaseModel:
         XMLError: [invalid XML]
     """
     # Import MOUNT_MAPPING at runtime so we avoid circular imports
-    from robosuite.models.bases import BASE_MAPPING
+    from robosuite.robosuite.models.bases import BASE_MAPPING
 
     return BASE_MAPPING.get(name, "Unknown base name: {}".format(name))(idn=idn)

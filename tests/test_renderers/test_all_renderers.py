@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 
 import robosuite as suite
-from robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.controllers import load_composite_controller_config
 
 
 def is_display_available() -> bool:

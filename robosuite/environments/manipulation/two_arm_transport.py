@@ -3,13 +3,13 @@ from collections import OrderedDict
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.environments.manipulation.two_arm_env import TwoArmEnv
-from robosuite.models.arenas import MultiTableArena
-from robosuite.models.objects import BoxObject, HammerObject, TransportGroup
-from robosuite.models.tasks import ManipulationTask
-from robosuite.utils.mjcf_utils import CustomMaterial
-from robosuite.utils.observables import Observable, sensor
-from robosuite.utils.placement_samplers import SequentialCompositeSampler, UniformRandomSampler
+from robosuite.robosuite.environments.manipulation.two_arm_env import TwoArmEnv
+from robosuite.robosuite.models.arenas import MultiTableArena
+from robosuite.robosuite.models.objects import BoxObject, HammerObject, TransportGroup
+from robosuite.robosuite.models.tasks import ManipulationTask
+from robosuite.robosuite.utils.mjcf_utils import CustomMaterial
+from robosuite.robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.utils.placement_samplers import SequentialCompositeSampler, UniformRandomSampler
 
 
 class TwoArmTransport(TwoArmEnv):

@@ -15,9 +15,9 @@ import h5py
 import numpy as np
 
 import robosuite as suite
-from robosuite.controllers import load_composite_controller_config
-from robosuite.controllers.composite.composite_controller import WholeBody
-from robosuite.wrappers import DataCollectionWrapper, VisualizationWrapper
+from robosuite.robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.controllers.composite.composite_controller import WholeBody
+from robosuite.robosuite.wrappers import DataCollectionWrapper, VisualizationWrapper
 
 
 def collect_human_trajectory(env, device, arm, max_fr, goal_update_mode):
@@ -298,7 +298,7 @@ if __name__ == "__main__":
 
     if controller_config["type"] == "WHOLE_BODY_MINK_IK":
         # mink-speicific import. requires installing mink
-        from robosuite.examples.third_party_controller.mink_controller import WholeBodyMinkIK
+        from robosuite.robosuite.examples.third_party_controller.mink_controller import WholeBodyMinkIK
 
     # if WHOLE BODY IK; assert only one robot
     if controller_config["type"] == "WHOLE_BODY_IK":
@@ -340,7 +340,7 @@ if __name__ == "__main__":
 
     # initialize device
     if args.device == "keyboard":
-        from robosuite.devices import Keyboard
+        from robosuite.robosuite.devices import Keyboard
 
         device = Keyboard(
             env=env,
@@ -348,7 +348,7 @@ if __name__ == "__main__":
             rot_sensitivity=args.rot_sensitivity,
         )
     elif args.device == "spacemouse":
-        from robosuite.devices import SpaceMouse
+        from robosuite.robosuite.devices import SpaceMouse
 
         device = SpaceMouse(
             env=env,
@@ -356,7 +356,7 @@ if __name__ == "__main__":
             rot_sensitivity=args.rot_sensitivity,
         )
     elif args.device == "dualsense":
-        from robosuite.devices import DualSense
+        from robosuite.robosuite.devices import DualSense
 
         device = DualSense(
             env=env,
@@ -366,7 +366,7 @@ if __name__ == "__main__":
         )
     elif args.device == "mjgui":
         assert args.renderer == "mjviewer", "Mocap is only supported with the mjviewer renderer"
-        from robosuite.devices.mjgui import MJGUI
+        from robosuite.robosuite.devices.mjgui import MJGUI
 
         device = MJGUI(env=env)
     else:

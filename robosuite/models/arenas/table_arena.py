@@ -1,7 +1,7 @@
 import numpy as np
 
-from robosuite.models.arenas import Arena
-from robosuite.utils.mjcf_utils import array_to_string, string_to_array, xml_path_completion
+from robosuite.robosuite.models.arenas import Arena
+from robosuite.robosuite.utils.mjcf_utils import array_to_string, string_to_array, xml_path_completion
 
 
 class TableArena(Arena):

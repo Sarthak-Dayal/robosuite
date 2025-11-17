@@ -4,8 +4,8 @@ import time
 import numpy as np
 
 import robosuite as suite
-from robosuite.controllers.composite.composite_controller_factory import load_composite_controller_config
-from robosuite.utils.input_utils import choose_environment, choose_multi_arm_config, choose_robots
+from robosuite.robosuite.controllers.composite.composite_controller_factory import load_composite_controller_config
+from robosuite.robosuite.utils.input_utils import choose_environment, choose_multi_arm_config, choose_robots
 
 MAX_FR = 25  # max frame rate for running simluation
 

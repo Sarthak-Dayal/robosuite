@@ -29,7 +29,7 @@ demonstrates how this can be easily achieved by using the GymWrapper.
 """
 
 import robosuite as suite
-from robosuite.wrappers import GymWrapper
+from robosuite.robosuite.wrappers import GymWrapper
 
 if __name__ == "__main__":
 

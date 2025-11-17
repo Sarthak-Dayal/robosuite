@@ -14,7 +14,7 @@ from PIL import Image
 
 import robosuite
 import robosuite.utils.transform_utils as trans
-from robosuite.utils.binding_utils import MjRenderContextOffscreen
+from robosuite.robosuite.utils.binding_utils import MjRenderContextOffscreen
 
 
 class BaseModder:

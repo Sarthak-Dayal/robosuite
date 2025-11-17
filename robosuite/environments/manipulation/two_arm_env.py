@@ -1,8 +1,8 @@
 import numpy as np
 
-from robosuite.environments.manipulation.manipulation_env import ManipulationEnv
-from robosuite.utils.robot_utils import check_bimanual
-from robosuite.utils.transform_utils import mat2quat
+from robosuite.robosuite.environments.manipulation.manipulation_env import ManipulationEnv
+from robosuite.robosuite.utils.robot_utils import check_bimanual
+from robosuite.robosuite.utils.transform_utils import mat2quat
 
 
 class TwoArmEnv(ManipulationEnv):

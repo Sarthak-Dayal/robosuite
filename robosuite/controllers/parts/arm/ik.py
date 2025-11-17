@@ -20,10 +20,10 @@ import mujoco
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.controllers.parts.generic.joint_pos import JointPositionController
-from robosuite.utils.binding_utils import MjSim
-from robosuite.utils.control_utils import *
-from robosuite.utils.ik_utils import IKSolver, get_nullspace_gains
+from robosuite.robosuite.controllers.parts.generic.joint_pos import JointPositionController
+from robosuite.robosuite.utils.binding_utils import MjSim
+from robosuite.robosuite.utils.control_utils import *
+from robosuite.robosuite.utils.ik_utils import IKSolver, get_nullspace_gains
 
 # Dict of supported ik robots
 SUPPORTED_IK_ROBOTS = {"Baxter", "Sawyer", "Panda", "GR1FixedLowerBody"}

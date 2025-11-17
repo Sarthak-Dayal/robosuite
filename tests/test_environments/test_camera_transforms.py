@@ -10,7 +10,7 @@ import numpy as np
 
 import robosuite
 import robosuite.utils.camera_utils as CU
-from robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.controllers import load_composite_controller_config
 
 
 def test_camera_transforms():

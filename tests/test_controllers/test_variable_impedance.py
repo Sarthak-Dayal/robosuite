@@ -28,7 +28,7 @@ import argparse
 import numpy as np
 
 import robosuite as suite
-from robosuite.controllers.composite.composite_controller_factory import load_composite_controller_config
+from robosuite.robosuite.controllers.composite.composite_controller_factory import load_composite_controller_config
 
 # Define the rate of change when sweeping through kp / damping values
 num_timesteps_per_change = 10

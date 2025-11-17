@@ -2,14 +2,14 @@ from collections import OrderedDict
 
 import numpy as np
 
-from robosuite.environments.manipulation.manipulation_env import ManipulationEnv
-from robosuite.models.arenas import TableArena
-from robosuite.models.objects import BoxObject
-from robosuite.models.tasks import ManipulationTask
-from robosuite.utils.mjcf_utils import CustomMaterial
-from robosuite.utils.observables import Observable, sensor
-from robosuite.utils.placement_samplers import UniformRandomSampler
-from robosuite.utils.transform_utils import convert_quat
+from robosuite.robosuite.environments.manipulation.manipulation_env import ManipulationEnv
+from robosuite.robosuite.models.arenas import TableArena
+from robosuite.robosuite.models.objects import BoxObject
+from robosuite.robosuite.models.tasks import ManipulationTask
+from robosuite.robosuite.utils.mjcf_utils import CustomMaterial
+from robosuite.robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.utils.placement_samplers import UniformRandomSampler
+from robosuite.robosuite.utils.transform_utils import convert_quat
 
 
 class Lift(ManipulationEnv):

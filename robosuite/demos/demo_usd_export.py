@@ -17,11 +17,11 @@ import mujoco
 import numpy as np
 
 import robosuite as suite
-from robosuite.controllers import load_composite_controller_config
-from robosuite.controllers.composite.composite_controller import WholeBody
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
-from robosuite.utils.usd import exporter
-from robosuite.wrappers import VisualizationWrapper
+from robosuite.robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.controllers.composite.composite_controller import WholeBody
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.utils.usd import exporter
+from robosuite.robosuite.wrappers import VisualizationWrapper
 
 if mujoco.__version__ == "3.1.1" and np.__version__[0] == "2":
     ROBOSUITE_DEFAULT_LOGGER.warning("If using mujoco==3.1.1, please use numpy < 2 for rendering with USD.")
@@ -133,7 +133,7 @@ if __name__ == "__main__":
 
     # initialize device
     if args.device == "keyboard":
-        from robosuite.devices import Keyboard
+        from robosuite.robosuite.devices import Keyboard
 
         device = Keyboard(
             env=env,
@@ -142,7 +142,7 @@ if __name__ == "__main__":
         )
         env.viewer.add_keypress_callback(device.on_press)
     elif args.device == "spacemouse":
-        from robosuite.devices import SpaceMouse
+        from robosuite.robosuite.devices import SpaceMouse
 
         device = SpaceMouse(
             env=env,
@@ -150,7 +150,7 @@ if __name__ == "__main__":
             rot_sensitivity=args.rot_sensitivity,
         )
     elif args.device == "dualsense":
-        from robosuite.devices import DualSense
+        from robosuite.robosuite.devices import DualSense
 
         device = DualSense(
             env=env,

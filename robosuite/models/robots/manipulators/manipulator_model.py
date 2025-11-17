@@ -3,9 +3,9 @@ from typing import Dict, List, Optional, Union
 
 import numpy as np
 
-from robosuite.models.grippers.gripper_model import GripperModel
-from robosuite.models.robots import RobotModel
-from robosuite.utils.mjcf_utils import find_elements, find_elements_by_substring, string_to_array
+from robosuite.robosuite.models.grippers.gripper_model import GripperModel
+from robosuite.robosuite.models.robots import RobotModel
+from robosuite.robosuite.utils.mjcf_utils import find_elements, find_elements_by_substring, string_to_array
 
 
 class ManipulatorModel(RobotModel):

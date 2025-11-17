@@ -19,7 +19,7 @@ from typing import Any, Dict, Optional, Tuple, Union
 import mujoco
 import numpy as np
 
-from robosuite.utils.transform_utils import euler2mat
+from robosuite.robosuite.utils.transform_utils import euler2mat
 
 
 def get_triangle_uvs(vertices: np.ndarray, triangles: np.ndarray, texture_type: Optional[mujoco.mjtTexture]):

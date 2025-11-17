@@ -4,10 +4,10 @@ from typing import Dict, List, Optional
 import mujoco
 import numpy as np
 
-from robosuite.models.base import MujocoXMLModel
-from robosuite.models.bases import LegBaseModel, MobileBaseModel, MountModel, NullBaseModel, RobotBaseModel
-from robosuite.utils.mjcf_utils import ROBOT_COLLISION_COLOR, array_to_string, find_elements, find_parent
-from robosuite.utils.transform_utils import euler2mat, mat2quat
+from robosuite.robosuite.models.base import MujocoXMLModel
+from robosuite.robosuite.models.bases import LegBaseModel, MobileBaseModel, MountModel, NullBaseModel, RobotBaseModel
+from robosuite.robosuite.utils.mjcf_utils import ROBOT_COLLISION_COLOR, array_to_string, find_elements, find_parent
+from robosuite.robosuite.utils.transform_utils import euler2mat, mat2quat
 
 REGISTERED_ROBOTS = {}
 

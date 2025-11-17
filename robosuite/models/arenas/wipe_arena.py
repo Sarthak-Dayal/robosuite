@@ -1,8 +1,8 @@
 import numpy as np
 
-from robosuite.models.arenas import TableArena
-from robosuite.models.objects import CylinderObject
-from robosuite.utils.mjcf_utils import CustomMaterial, find_elements
+from robosuite.robosuite.models.arenas import TableArena
+from robosuite.robosuite.models.objects import CylinderObject
+from robosuite.robosuite.utils.mjcf_utils import CustomMaterial, find_elements
 
 
 class WipeArena(TableArena):

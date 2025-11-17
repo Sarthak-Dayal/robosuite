@@ -5,8 +5,8 @@ from typing import Dict, List
 
 import numpy as np
 
-from robosuite.models.base import MujocoXMLModel
-from robosuite.utils.mjcf_utils import MOUNT_COLLISION_COLOR
+from robosuite.robosuite.models.base import MujocoXMLModel
+from robosuite.robosuite.utils.mjcf_utils import MOUNT_COLLISION_COLOR
 
 
 class RobotBaseModel(MujocoXMLModel):

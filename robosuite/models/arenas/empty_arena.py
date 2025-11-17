@@ -1,5 +1,5 @@
-from robosuite.models.arenas import Arena
-from robosuite.utils.mjcf_utils import xml_path_completion
+from robosuite.robosuite.models.arenas import Arena
+from robosuite.robosuite.utils.mjcf_utils import xml_path_completion
 
 
 class EmptyArena(Arena):

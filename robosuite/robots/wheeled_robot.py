@@ -5,9 +5,9 @@ from collections import OrderedDict
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.controllers import composite_controller_factory
-from robosuite.robots.mobile_robot import MobileRobot
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.controllers import composite_controller_factory
+from robosuite.robosuite.robots.mobile_robot import MobileRobot
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 
 class WheeledRobot(MobileRobot):

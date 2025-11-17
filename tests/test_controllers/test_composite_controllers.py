@@ -11,13 +11,13 @@ import numpy as np
 import pytest
 
 import robosuite as suite
-from robosuite.controllers import load_composite_controller_config
-from robosuite.robots import ROBOT_CLASS_MAPPING
+from robosuite.robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.robots import ROBOT_CLASS_MAPPING
 
 
 def is_robosuite_robot(robot: str) -> bool:
     """
-    robot is robosuite repo robot if can import robot class from robosuite.models.robots
+    robot is robosuite repo robot if can import robot class from robosuite.robosuite.models.robots
     """
     try:
         module = __import__("robosuite.models.robots", fromlist=[robot])

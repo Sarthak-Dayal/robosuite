@@ -7,11 +7,11 @@ from typing import Dict, List
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.controllers import composite_controller_factory, load_part_controller_config
-from robosuite.models.bases.leg_base_model import LegBaseModel
-from robosuite.robots.mobile_robot import MobileRobot
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
-from robosuite.utils.observables import sensor
+from robosuite.robosuite.controllers import composite_controller_factory, load_part_controller_config
+from robosuite.robosuite.models.bases.leg_base_model import LegBaseModel
+from robosuite.robosuite.robots.mobile_robot import MobileRobot
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.utils.observables import sensor
 
 
 class LeggedRobot(MobileRobot):

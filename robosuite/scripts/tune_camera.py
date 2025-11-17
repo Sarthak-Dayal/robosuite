@@ -14,8 +14,8 @@ from pynput.keyboard import Controller, Key, Listener
 
 import robosuite
 import robosuite.utils.transform_utils as T
-from robosuite.utils.camera_utils import CameraMover
-from robosuite.utils.mjcf_utils import find_elements, find_parent
+from robosuite.robosuite.utils.camera_utils import CameraMover
+from robosuite.robosuite.utils.mjcf_utils import find_elements, find_parent
 
 # some settings
 DELTA_POS_KEY_PRESS = 0.05  # delta camera position per key press

@@ -1,8 +1,8 @@
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.controllers.parts.mobile_base.mobile_base_controller import MobileBaseController
-from robosuite.utils.control_utils import *
+from robosuite.robosuite.controllers.parts.mobile_base.mobile_base_controller import MobileBaseController
+from robosuite.robosuite.utils.control_utils import *
 
 # Supported impedance modes
 IMPEDANCE_MODES = {"fixed", "variable", "variable_kp"}

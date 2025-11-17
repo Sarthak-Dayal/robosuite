@@ -7,11 +7,11 @@ from copy import deepcopy
 
 import numpy as np
 
-from robosuite.controllers.parts import arm as arm_controllers
-from robosuite.controllers.parts import generic
-from robosuite.controllers.parts import gripper as gripper_controllers
-from robosuite.controllers.parts import mobile_base as mobile_base_controllers
-from robosuite.utils.traj_utils import LinearInterpolator
+from robosuite.robosuite.controllers.parts import arm as arm_controllers
+from robosuite.robosuite.controllers.parts import generic
+from robosuite.robosuite.controllers.parts import gripper as gripper_controllers
+from robosuite.robosuite.controllers.parts import mobile_base as mobile_base_controllers
+from robosuite.robosuite.utils.traj_utils import LinearInterpolator
 
 # from . import legs as legs_controllers
 
@@ -42,7 +42,7 @@ def load_part_controller_config(custom_fpath=None, default_controller=None):
     if default_controller is not None:
 
         # Assert that requested default controller is in the available default controllers
-        from robosuite.controllers import ALL_PART_CONTROLLERS
+        from robosuite.robosuite.controllers import ALL_PART_CONTROLLERS
 
         assert (
             default_controller in ALL_PART_CONTROLLERS
@@ -122,7 +122,7 @@ def arm_controller_factory(name, params):
             ori_interpolator = deepcopy(interpolator)
             ori_interpolator.set_states(dim=4, ori="quat")
 
-        from robosuite.controllers.parts.arm.ik import InverseKinematicsController
+        from robosuite.robosuite.controllers.parts.arm.ik import InverseKinematicsController
 
         return InverseKinematicsController(
             interpolator_pos=interpolator,

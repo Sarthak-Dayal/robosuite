@@ -3,8 +3,8 @@ from collections.abc import Iterable
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.models.arenas import Arena
-from robosuite.utils.mjcf_utils import (
+from robosuite.robosuite.models.arenas import Arena
+from robosuite.robosuite.utils.mjcf_utils import (
     array_to_string,
     new_body,
     new_geom,

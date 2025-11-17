@@ -2,7 +2,7 @@ import argparse
 import json
 
 import robosuite as suite
-from robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.controllers import load_composite_controller_config
 
 parser = argparse.ArgumentParser()
 

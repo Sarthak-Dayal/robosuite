@@ -1,6 +1,6 @@
 # Utilities functions for working with robots
 
-from robosuite.models.robots.robot_model import REGISTERED_ROBOTS
+from robosuite.robosuite.models.robots.robot_model import REGISTERED_ROBOTS
 
 
 def check_bimanual(robot_name):

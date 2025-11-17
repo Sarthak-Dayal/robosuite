@@ -2,7 +2,7 @@
 Defines the mobile base model
 """
 
-from robosuite.models.bases.robot_base_model import RobotBaseModel
+from robosuite.robosuite.models.bases.robot_base_model import RobotBaseModel
 
 
 class MobileBaseModel(RobotBaseModel):

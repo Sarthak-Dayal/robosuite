@@ -6,7 +6,7 @@ This runs some basic sanity checks on the robots, namely, checking that:
 
 Obviously, if an environment crashes during runtime, that is considered a failure as well.
 """
-from robosuite.robots import ROBOT_CLASS_MAPPING, FixedBaseRobot, LeggedRobot, WheeledRobot
+from robosuite.robosuite.robots import ROBOT_CLASS_MAPPING, FixedBaseRobot, LeggedRobot, WheeledRobot
 
 
 def test_all_robots():

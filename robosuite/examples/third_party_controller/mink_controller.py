@@ -13,11 +13,11 @@ from mink.tasks.exceptions import TargetNotSet
 from mink.tasks.frame_task import FrameTask
 
 import robosuite.utils.transform_utils as T
-from robosuite.controllers.composite.composite_controller import WholeBody, register_composite_controller
-from robosuite.models.grippers.gripper_model import GripperModel
-from robosuite.models.robots.robot_model import RobotModel
-from robosuite.utils.binding_utils import MjSim
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.controllers.composite.composite_controller import WholeBody, register_composite_controller
+from robosuite.robosuite.models.grippers.gripper_model import GripperModel
+from robosuite.robosuite.models.robots.robot_model import RobotModel
+from robosuite.robosuite.utils.binding_utils import MjSim
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 
 def update(self, q: Optional[np.ndarray] = None, update_idxs: Optional[np.ndarray] = None) -> None:

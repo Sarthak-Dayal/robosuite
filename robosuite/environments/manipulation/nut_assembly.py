@@ -4,12 +4,12 @@ from collections import OrderedDict
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.environments.manipulation.manipulation_env import ManipulationEnv
-from robosuite.models.arenas import PegsArena
-from robosuite.models.objects import RoundNutObject, SquareNutObject
-from robosuite.models.tasks import ManipulationTask
-from robosuite.utils.observables import Observable, sensor
-from robosuite.utils.placement_samplers import SequentialCompositeSampler, UniformRandomSampler
+from robosuite.robosuite.environments.manipulation.manipulation_env import ManipulationEnv
+from robosuite.robosuite.models.arenas import PegsArena
+from robosuite.robosuite.models.objects import RoundNutObject, SquareNutObject
+from robosuite.robosuite.models.tasks import ManipulationTask
+from robosuite.robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.utils.placement_samplers import SequentialCompositeSampler, UniformRandomSampler
 
 
 class NutAssembly(ManipulationEnv):

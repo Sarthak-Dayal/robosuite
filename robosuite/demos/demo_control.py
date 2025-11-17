@@ -48,8 +48,8 @@ import time
 from typing import Dict
 
 import robosuite as suite
-from robosuite.controllers.composite.composite_controller_factory import refactor_composite_controller_config
-from robosuite.utils.input_utils import *
+from robosuite.robosuite.controllers.composite.composite_controller_factory import refactor_composite_controller_config
+from robosuite.robosuite.utils.input_utils import *
 
 MAX_FR = 25  # max frame rate for running simluation
 

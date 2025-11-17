@@ -1,9 +1,9 @@
 from collections import OrderedDict
 
-from robosuite.environments.base import REGISTERED_ENVS
-from robosuite.models.bases import BASE_MAPPING
-from robosuite.models.robots.robot_model import REGISTERED_ROBOTS
-from robosuite.robots import ROBOT_CLASS_MAPPING
+from robosuite.robosuite.environments.base import REGISTERED_ENVS
+from robosuite.robosuite.models.bases import BASE_MAPPING
+from robosuite.robosuite.models.robots.robot_model import REGISTERED_ROBOTS
+from robosuite.robosuite.robots import ROBOT_CLASS_MAPPING
 
 
 def bold_green_text(text):

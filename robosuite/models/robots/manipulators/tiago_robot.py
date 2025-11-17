@@ -1,7 +1,7 @@
 import numpy as np
 
-from robosuite.models.robots.manipulators.manipulator_model import ManipulatorModel
-from robosuite.utils.mjcf_utils import xml_path_completion
+from robosuite.robosuite.models.robots.manipulators.manipulator_model import ManipulatorModel
+from robosuite.robosuite.utils.mjcf_utils import xml_path_completion
 
 
 class Tiago(ManipulatorModel):

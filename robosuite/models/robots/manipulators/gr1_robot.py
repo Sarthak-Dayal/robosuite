@@ -1,7 +1,7 @@
 import numpy as np
 
-from robosuite.models.robots.manipulators.legged_manipulator_model import LeggedManipulatorModel
-from robosuite.utils.mjcf_utils import find_parent, xml_path_completion
+from robosuite.robosuite.models.robots.manipulators.legged_manipulator_model import LeggedManipulatorModel
+from robosuite.robosuite.utils.mjcf_utils import find_parent, xml_path_completion
 
 
 class GR1(LeggedManipulatorModel):

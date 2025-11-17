@@ -2,7 +2,7 @@
 Defines the MountModel class (Fixed Base that is mounted to the robot)
 """
 
-from robosuite.models.bases.robot_base_model import RobotBaseModel
+from robosuite.robosuite.models.bases.robot_base_model import RobotBaseModel
 
 
 class MountModel(RobotBaseModel):

@@ -12,7 +12,7 @@ import time
 import h5py
 import numpy as np
 
-from robosuite.wrappers import Wrapper
+from robosuite.robosuite.wrappers import Wrapper
 
 
 class DemoSamplerWrapper(Wrapper):

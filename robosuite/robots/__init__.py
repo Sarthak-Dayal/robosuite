@@ -3,9 +3,9 @@ from .mobile_robot import MobileRobot
 from .wheeled_robot import WheeledRobot
 from .legged_robot import LeggedRobot
 
-from robosuite.models.robots.robot_model import REGISTERED_ROBOTS
+from robosuite.robosuite.models.robots.robot_model import REGISTERED_ROBOTS
 
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 ALL_ROBOTS = REGISTERED_ROBOTS.keys()
 

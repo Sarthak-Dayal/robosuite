@@ -3,10 +3,10 @@ from typing import Dict, List, Optional, Tuple
 import mujoco
 import numpy as np
 
-from robosuite.controllers.composite.composite_controller import WholeBody, WholeBodyIK
-from robosuite.devices import Device
-from robosuite.utils import transform_utils
-from robosuite.utils.transform_utils import rotation_matrix
+from robosuite.robosuite.controllers.composite.composite_controller import WholeBody, WholeBodyIK
+from robosuite.robosuite.devices import Device
+from robosuite.robosuite.utils import transform_utils
+from robosuite.robosuite.utils.transform_utils import rotation_matrix
 
 
 def set_mocap_pose(

@@ -10,13 +10,13 @@ import time
 import numpy as np
 
 import robosuite as suite
-from robosuite.controllers import load_composite_controller_config
-from robosuite.devices.keyboard import Keyboard
-from robosuite.devices.mjgui import MJGUI
+from robosuite.robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.devices.keyboard import Keyboard
+from robosuite.robosuite.devices.mjgui import MJGUI
 
 # mink-specific import
-from robosuite.examples.third_party_controller.mink_controller import WholeBodyMinkIK
-from robosuite.wrappers import DataCollectionWrapper
+from robosuite.robosuite.examples.third_party_controller.mink_controller import WholeBodyMinkIK
+from robosuite.robosuite.wrappers import DataCollectionWrapper
 
 
 def collect_human_trajectory(env, device, arm):

@@ -1,7 +1,7 @@
 import numpy as np
 
-from robosuite.models.objects import MujocoGeneratedObject, PrimitiveObject
-from robosuite.utils.mjcf_utils import get_size
+from robosuite.robosuite.models.objects import MujocoGeneratedObject, PrimitiveObject
+from robosuite.robosuite.utils.mjcf_utils import get_size
 
 
 class CylinderObject(PrimitiveObject):

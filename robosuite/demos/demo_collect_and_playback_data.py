@@ -13,7 +13,7 @@ from glob import glob
 import numpy as np
 
 import robosuite as suite
-from robosuite.wrappers import DataCollectionWrapper
+from robosuite.robosuite.wrappers import DataCollectionWrapper
 
 
 def collect_random_trajectory(env, timesteps=1000, max_fr=None):

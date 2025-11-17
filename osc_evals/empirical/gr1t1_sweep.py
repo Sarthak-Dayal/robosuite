@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Tuple
 
 import numpy as np
 
-from robosuite.utils import transform_utils as T
+from robosuite.robosuite.utils import transform_utils as T
 
 from ..environment import OSCEnvironmentManager
 from ..runner import DemoRunner

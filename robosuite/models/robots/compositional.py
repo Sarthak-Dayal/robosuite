@@ -1,6 +1,6 @@
 import numpy as np
 
-from robosuite.models.robots import *
+from robosuite.robosuite.models.robots import *
 
 
 class PandaOmron(Panda):

@@ -11,7 +11,7 @@ import h5py
 import numpy as np
 
 import robosuite
-from robosuite.controllers import load_composite_controller_config
+from robosuite.robosuite.controllers import load_composite_controller_config
 
 
 def test_playback():

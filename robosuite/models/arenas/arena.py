@@ -2,8 +2,8 @@ from typing import List, Union
 
 import numpy as np
 
-from robosuite.models.base import MujocoXML
-from robosuite.utils.mjcf_utils import (
+from robosuite.robosuite.models.base import MujocoXML
+from robosuite.robosuite.utils.mjcf_utils import (
     ENVIRONMENT_COLLISION_COLOR,
     array_to_string,
     find_elements,

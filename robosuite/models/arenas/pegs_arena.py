@@ -1,4 +1,4 @@
-from robosuite.models.arenas import TableArena
+from robosuite.robosuite.models.arenas import TableArena
 
 
 class PegsArena(TableArena):

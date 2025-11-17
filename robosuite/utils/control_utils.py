@@ -1,7 +1,7 @@
 import numpy as np
 
 import robosuite.utils.transform_utils as trans
-from robosuite.utils.numba import jit_decorator
+from robosuite.robosuite.utils.numba import jit_decorator
 
 
 @jit_decorator

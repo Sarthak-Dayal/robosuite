@@ -3,8 +3,8 @@ Rethink's Alternative Mount (Officially used on Baxter).
 """
 import numpy as np
 
-from robosuite.models.bases.mount_model import MountModel
-from robosuite.utils.mjcf_utils import xml_path_completion
+from robosuite.robosuite.models.bases.mount_model import MountModel
+from robosuite.robosuite.utils.mjcf_utils import xml_path_completion
 
 
 class RethinkMinimalMount(MountModel):

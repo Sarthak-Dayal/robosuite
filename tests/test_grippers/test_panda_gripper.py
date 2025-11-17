@@ -2,7 +2,7 @@
 Tests panda gripper on grabbing task
 """
 
-from robosuite.models.grippers import GripperTester, PandaGripper
+from robosuite.robosuite.models.grippers import GripperTester, PandaGripper
 
 
 def test_panda_gripper():

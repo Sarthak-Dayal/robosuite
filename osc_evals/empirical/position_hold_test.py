@@ -13,7 +13,7 @@ from .movement_test_base import MovementTestBase
 from .metrics import TrackingMetrics
 from .video_utils import VideoRecorder
 from typing import List
-from robosuite.utils import control_utils
+from robosuite.robosuite.utils import control_utils
 import robosuite.utils.transform_utils as T
 
 class PositionHoldTest(MovementTestBase):

@@ -20,7 +20,7 @@ except ImportError:
         # Please check: https://github.com/openai/gym/releases/tag/0.26.0
         raise ImportError("Please ensure version of gym>=0.26.0 to use the GymWrapper.")
 
-from robosuite.wrappers import Wrapper
+from robosuite.robosuite.wrappers import Wrapper
 
 
 class GymWrapper(Wrapper, gym.Env):

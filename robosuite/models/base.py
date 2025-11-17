@@ -4,8 +4,8 @@ import xml.dom.minidom
 import xml.etree.ElementTree as ET
 
 import robosuite.macros as macros
-from robosuite.utils import XMLError
-from robosuite.utils.mjcf_utils import (
+from robosuite.robosuite.utils import XMLError
+from robosuite.robosuite.utils.mjcf_utils import (
     _element_filter,
     add_material,
     add_prefix,

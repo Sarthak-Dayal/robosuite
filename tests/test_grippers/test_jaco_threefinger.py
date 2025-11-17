@@ -1,4 +1,4 @@
-from robosuite.models.grippers import GripperTester, JacoThreeFingerGripper
+from robosuite.robosuite.models.grippers import GripperTester, JacoThreeFingerGripper
 
 
 def test_robotiq():

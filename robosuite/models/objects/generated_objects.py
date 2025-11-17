@@ -2,8 +2,8 @@ from copy import deepcopy
 
 import numpy as np
 
-from robosuite.models.objects import MujocoGeneratedObject, MujocoObject
-from robosuite.utils.mjcf_utils import (
+from robosuite.robosuite.models.objects import MujocoGeneratedObject, MujocoObject
+from robosuite.robosuite.utils.mjcf_utils import (
     OBJECT_COLLISION_COLOR,
     CustomMaterial,
     add_prefix,

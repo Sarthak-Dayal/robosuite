@@ -36,7 +36,7 @@ import robosuite.utils.usd.camera as camera_module
 import robosuite.utils.usd.lights as light_module
 import robosuite.utils.usd.objects as object_module
 import robosuite.utils.usd.shapes as shapes_module
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
 
 PRIMARY_CAMERA_NAME = "primary_camera"
 

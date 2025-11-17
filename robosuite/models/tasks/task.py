@@ -3,10 +3,10 @@ from copy import deepcopy
 
 import mujoco
 
-from robosuite.models.objects import MujocoObject
-from robosuite.models.robots import RobotModel
-from robosuite.models.world import MujocoWorldBase
-from robosuite.utils.mjcf_utils import get_ids
+from robosuite.robosuite.models.objects import MujocoObject
+from robosuite.robosuite.models.robots import RobotModel
+from robosuite.robosuite.models.world import MujocoWorldBase
+from robosuite.robosuite.utils.mjcf_utils import get_ids
 
 
 def get_subtree_geom_ids_by_group(model: mujoco.MjModel, body_id: int, group: int) -> list[int]:

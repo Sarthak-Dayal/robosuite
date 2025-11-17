@@ -7,16 +7,16 @@ from typing import Optional
 import numpy as np
 
 import robosuite.utils.transform_utils as T
-from robosuite.controllers import load_composite_controller_config, load_part_controller_config
-from robosuite.models.bases import robot_base_factory
-from robosuite.models.grippers import gripper_factory
-from robosuite.models.robots import create_robot
-from robosuite.models.robots.robot_model import REGISTERED_ROBOTS
-from robosuite.utils.binding_utils import MjSim
-from robosuite.utils.buffers import DeltaBuffer, RingBuffer
-from robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
-from robosuite.utils.mjcf_utils import array_to_string
-from robosuite.utils.observables import Observable, sensor
+from robosuite.robosuite.controllers import load_composite_controller_config, load_part_controller_config
+from robosuite.robosuite.models.bases import robot_base_factory
+from robosuite.robosuite.models.grippers import gripper_factory
+from robosuite.robosuite.models.robots import create_robot
+from robosuite.robosuite.models.robots.robot_model import REGISTERED_ROBOTS
+from robosuite.robosuite.utils.binding_utils import MjSim
+from robosuite.robosuite.utils.buffers import DeltaBuffer, RingBuffer
+from robosuite.robosuite.utils.log_utils import ROBOSUITE_DEFAULT_LOGGER
+from robosuite.robosuite.utils.mjcf_utils import array_to_string
+from robosuite.robosuite.utils.observables import Observable, sensor
 
 
 class Robot(object):

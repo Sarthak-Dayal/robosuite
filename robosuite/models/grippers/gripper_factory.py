@@ -3,7 +3,7 @@ Defines a string based method of initializing grippers
 """
 from typing import Optional
 
-from robosuite.models.grippers.gripper_model import GripperModel
+from robosuite.robosuite.models.grippers.gripper_model import GripperModel
 
 
 def gripper_factory(name: Optional[str], idn=0) -> GripperModel:
@@ -23,7 +23,7 @@ def gripper_factory(name: Optional[str], idn=0) -> GripperModel:
         XMLError: [invalid XML]
     """
     # Import GRIPPER_MAPPING at runtime so we avoid circular imports
-    from robosuite.models.grippers import ALL_GRIPPERS, GRIPPER_MAPPING
+    from robosuite.robosuite.models.grippers import ALL_GRIPPERS, GRIPPER_MAPPING
 
     # Make sure gripper is valid
     assert name in GRIPPER_MAPPING, f"Unknown end effector name: {name}. Valid options are: {ALL_GRIPPERS}"
