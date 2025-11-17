@@ -2,6 +2,8 @@
 Demo execution runner
 """
 
+from typing import Any, Dict
+
 from .base import OSCDemoBase
 from .environment import OSCEnvironmentManager
 
@@ -15,7 +17,9 @@ class DemoRunner:
     
     def run_demo(self, demo_class: type[OSCDemoBase], 
                  controller_type: str, impedance_mode: str,
-                 render: bool = True, **kwargs):
+                 render: bool = True,
+                 controller_overrides: Dict[str, Any] = None,
+                 **kwargs):
         """Run a demo with appropriate environment configuration"""
         
         # Check if we need to override controller settings
@@ -56,7 +60,8 @@ class DemoRunner:
             controller_type=controller_type,
             impedance_mode=impedance_mode,
             use_offscreen=use_offscreen,
-            use_camera_obs=use_camera_obs
+            use_camera_obs=use_camera_obs,
+            controller_overrides=controller_overrides,
         )
         
         # Disable window rendering whenever offscreen is enabled
@@ -64,7 +69,7 @@ class DemoRunner:
         
         # Create and run demo, passing through kwargs for empirical test parameters
         demo = demo_class(self.current_env, render=actual_render, **kwargs)
-        demo.run()
+        return demo.run()
     
     def cleanup(self):
         """Clean up resources"""

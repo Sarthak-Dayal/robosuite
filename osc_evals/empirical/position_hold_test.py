@@ -5,7 +5,7 @@ Tests OSC controller by moving to random positions and holding them,
 tracking steady-state error and other performance metrics.
 """
 
-from typing import Optional, Iterator, Tuple
+from typing import Optional, Iterator, Tuple, Dict
 import numpy as np
 import wandb
 
@@ -24,7 +24,12 @@ class PositionHoldTest(MovementTestBase):
                  workspace_bounds: Optional[Tuple[np.ndarray, np.ndarray]] = None,
                  target_positions: Optional[List[np.ndarray]] = None,
                  target_poses: Optional[List[Tuple[np.ndarray, np.ndarray]]] = None,
-                 move_max_steps: int = 500):
+                 move_max_steps: int = 500,
+                 log_videos: bool = True,
+                 wandb_project: Optional[str] = None,
+                 wandb_entity: Optional[str] = None,
+                 wandb_run_name: Optional[str] = None,
+                 wandb_config: Optional[Dict] = None):
         super().__init__(env, render, timestep)
         self.num_targets = num_targets
         self.hold_duration = hold_duration
@@ -36,6 +41,12 @@ class PositionHoldTest(MovementTestBase):
         self.target_poses = target_poses
         # Max steps allowed during movement phase before timing out
         self.move_max_steps = move_max_steps
+        self.log_videos = log_videos
+        self.wandb_project = wandb_project
+        self.wandb_entity = wandb_entity
+        self.wandb_run_name = wandb_run_name
+        self.wandb_config = wandb_config or {}
+        self._owns_wandb_run = False
         
     @property
     def name(self) -> str:
@@ -323,15 +334,24 @@ class PositionHoldTest(MovementTestBase):
         
         # Initialize wandb with correct target count
         if self.use_wandb:
-            wandb.init(
-                project="osc-controller-evals",
-                name=f"position_hold_{num_targets}_targets",
-                config={
-                    "num_targets": num_targets,
-                    "hold_duration": self.hold_duration,
-                    "controller_type": "OSC_POSE" if self.is_pose_control else "OSC_POSITION",
-                }
-            )
+            run_name = self.wandb_run_name or f"position_hold_{num_targets}_targets"
+            project = self.wandb_project or "osc-controller-evals"
+            base_config = {
+                "num_targets": num_targets,
+                "hold_duration": self.hold_duration,
+                "controller_type": "OSC_POSE" if self.is_pose_control else "OSC_POSITION",
+            }
+            base_config.update(self.wandb_config)
+            if wandb.run is None:
+                wandb.init(
+                    project=project,
+                    entity=self.wandb_entity,
+                    name=run_name,
+                    config=base_config,
+                )
+                self._owns_wandb_run = True
+            else:
+                wandb.config.update(base_config, allow_val_change=True)
         
         print(f"Running position hold test with {num_targets} targets")
         print(f"Hold duration: {self.hold_duration} timesteps (~{self.hold_duration/20:.1f} seconds)")
@@ -340,7 +360,7 @@ class PositionHoldTest(MovementTestBase):
         print(f"Workspace range: X: ±{self.workspace_bounds[1][0] - start_pos[0]:.2f}m, Y: ±{self.workspace_bounds[1][1] - start_pos[1]:.2f}m, Z: +{self.workspace_bounds[1][2] - start_pos[2]:.2f}m\n")
         
         # Initialize video recorder (keep all history for complete error plot)
-        video_recorder = VideoRecorder(max_history=None)
+        video_recorder = VideoRecorder(max_history=None) if self.log_videos else None
         
         # Track all metrics
         all_segment_metrics = []
@@ -407,11 +427,12 @@ class PositionHoldTest(MovementTestBase):
                 )
                 
                 # Record video frame
-                video_recorder.add_frame(
-                    self.env,
-                    pos_error[0], pos_error[1], pos_error[2],
-                    global_step
-                )
+                if video_recorder is not None:
+                    video_recorder.add_frame(
+                        self.env,
+                        pos_error[0], pos_error[1], pos_error[2],
+                        global_step
+                    )
                 
                 # Calculate orientation error if pose control
                 ori_error_mag = None
@@ -535,9 +556,10 @@ class PositionHoldTest(MovementTestBase):
                 wandb.log({"combined_video": wandb.Video(video, fps=20, format="mp4")})
         
         # Log final summary
-        if self.use_wandb:
+        if self.use_wandb and wandb.run is not None:
             wandb.summary.update(overall_results)
-            wandb.finish()
+            if self._owns_wandb_run:
+                wandb.finish()
         
         print("\n" + "="*60)
         print("TEST COMPLETE")
@@ -554,4 +576,6 @@ class PositionHoldTest(MovementTestBase):
             print(f"  Std Orientation Error: {overall_results['orientation_error_std']:.4f}rad ({np.degrees(overall_results['orientation_error_std']):.2f}°)")
         else:
             print("\nNote: Orientation tracking not available (using OSC_POSITION or no orientation targets)")
+
+        return overall_results
 

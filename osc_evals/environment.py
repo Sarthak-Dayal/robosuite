@@ -39,16 +39,23 @@ class OSCEnvironmentManager:
     def create_environment(self, controller_type: str = "OSC_POSE",
                           impedance_mode: str = "fixed",
                           use_offscreen: bool = False,
-                          use_camera_obs: bool = False) -> Any:
+                          use_camera_obs: bool = False,
+                          controller_overrides: Dict[str, Any] = None) -> Any:
         """Create and return a configured environment"""
         # Load the part controller config
         arm_controller_config = suite.load_part_controller_config(
             default_controller=controller_type
         )
+        arm_controller_config = arm_controller_config.copy()
         
         # Modify impedance mode if needed
         if impedance_mode != "fixed":
             arm_controller_config["impedance_mode"] = impedance_mode
+
+        # Apply any controller overrides (kp, damping, limits, etc.)
+        if controller_overrides:
+            for key, value in controller_overrides.items():
+                arm_controller_config[key] = value
         
         # Wrap it in composite controller format for the robot
         controller_config = refactor_composite_controller_config(

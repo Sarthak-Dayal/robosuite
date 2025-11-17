@@ -73,6 +73,24 @@ Examples:
         help="Enable wandb logging (required for empirical tests)"
     )
     parser.add_argument(
+        "--wandb-project",
+        type=str,
+        default=None,
+        help="Override wandb project name"
+    )
+    parser.add_argument(
+        "--wandb-entity",
+        type=str,
+        default=None,
+        help="Override wandb entity / team"
+    )
+    parser.add_argument(
+        "--wandb-run-name",
+        type=str,
+        default=None,
+        help="Override wandb run name"
+    )
+    parser.add_argument(
         "--num-targets",
         type=int,
         default=10,
@@ -89,6 +107,11 @@ Examples:
         type=int,
         default=500,
         help="Maximum timesteps allowed to reach each target before timing out"
+    )
+    parser.add_argument(
+        "--no-video-logging",
+        action="store_true",
+        help="Disable video capture/logging for empirical tests"
     )
     parser.add_argument(
         "--workspace-x-range",
@@ -132,6 +155,30 @@ Examples:
         default=None,
         help="Path to JSON file with target EE poses for position_hold (list of [x,y,z,roll,pitch,yaw] arrays)"
     )
+    parser.add_argument(
+        "--task-kp",
+        type=float,
+        default=None,
+        help="Override OSC task-space stiffness (applied uniformly to all axes)"
+    )
+    parser.add_argument(
+        "--task-damping-ratio",
+        type=float,
+        default=None,
+        help="Override OSC task-space damping ratio (applied uniformly to all axes)"
+    )
+    parser.add_argument(
+        "--task-pos-output-max",
+        type=float,
+        default=None,
+        help="Override maximum translational step size (meters) for OSC controller (XYZ axes)"
+    )
+    parser.add_argument(
+        "--task-ori-output-max",
+        type=float,
+        default=None,
+        help="Override maximum rotational step size (radians) for OSC controller (roll/pitch/yaw axes)"
+    )
     # Joint targets eval specific
     parser.add_argument(
         "--targets-json",
@@ -152,6 +199,22 @@ Examples:
     print(f"Impedance Mode: {args.impedance}")
     print(f"Demo: {args.demo}")
     
+    # Build controller overrides if specified
+    controller_overrides = {}
+    if args.task_kp is not None:
+        controller_overrides["kp"] = args.task_kp
+    if args.task_damping_ratio is not None:
+        controller_overrides["damping_ratio"] = args.task_damping_ratio
+    if args.task_pos_output_max is not None or args.task_ori_output_max is not None:
+        pos_max = args.task_pos_output_max if args.task_pos_output_max is not None else 0.05
+        ori_max = args.task_ori_output_max if args.task_ori_output_max is not None else 0.5
+        output_max = [pos_max] * 3 + [ori_max] * 3
+        output_min = [-val for val in output_max]
+        controller_overrides["output_max"] = output_max
+        controller_overrides["output_min"] = output_min
+    if not controller_overrides:
+        controller_overrides = None
+
     # Create environment manager
     env_manager = OSCEnvironmentManager(
         robot=args.robot,
@@ -164,6 +227,7 @@ Examples:
         impedance_mode=args.impedance,
         use_offscreen=args.no_render,
         use_camera_obs=False,
+        controller_overrides=controller_overrides,
     )
     
     env_manager.print_controller_info(env)
@@ -180,6 +244,9 @@ Examples:
             demo_kwargs['use_wandb'] = True
             demo_kwargs['num_targets'] = args.num_targets
             demo_kwargs['hold_duration'] = args.hold_duration
+            demo_kwargs['wandb_project'] = args.wandb_project
+            demo_kwargs['wandb_entity'] = args.wandb_entity
+            demo_kwargs['wandb_run_name'] = args.wandb_run_name
             # Add workspace bounds if specified
             if any([args.workspace_x_range, args.workspace_y_range, args.workspace_z_min, args.workspace_z_max]):
                 import numpy as np
@@ -189,6 +256,7 @@ Examples:
                     impedance_mode=args.impedance,
                     use_offscreen=True,
                     use_camera_obs=False,
+                    controller_overrides=controller_overrides,
                 )
                 robot = temp_env.robots[0]
                 ee_positions = robot._hand_pos
@@ -259,6 +327,7 @@ Examples:
                     impedance_mode=args.impedance,
                     use_offscreen=True,
                     use_camera_obs=False,
+                    controller_overrides=controller_overrides,
                 )
                 sim = temp_env.sim
                 robot = temp_env.robots[0]
@@ -307,6 +376,7 @@ Examples:
 
             # Movement time limit for reaching targets
             demo_kwargs['move_max_steps'] = args.move_max_steps
+            demo_kwargs['log_videos'] = not args.no_video_logging
 
         # Special handling for joint_targets demo
         if args.demo == 'joint_targets':
@@ -344,6 +414,7 @@ Examples:
                 controller_type=args.controller,
                 impedance_mode=args.impedance,
                 render=not args.no_render,
+                controller_overrides=controller_overrides,
                 **demo_kwargs
             )
             print("\n[CLI] Demo run completed successfully.\n")
